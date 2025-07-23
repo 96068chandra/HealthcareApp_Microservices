@@ -61,6 +61,8 @@ namespace HealthcareApp.Identity.API.Controllers
 
             user.Id = Guid.NewGuid();
             user.CreatedDate = DateTime.UtcNow;
+            user.LastModifiedDate=DateTime.UtcNow;
+            
             user.PasswordHash = _passwordHasher.HashPassword(user, user.PasswordHash);
 
             var createdUser = await _userRepository.AddAsync(user);
